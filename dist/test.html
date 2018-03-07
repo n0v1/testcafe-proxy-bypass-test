@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <title>Test</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-index">
+  <h1>Hello World</h1>
+
+  <div id="show-when-local-stylesheet-loaded" style="display: none;">
+    Local CSS file successfully loaded
+  </div>
+
+  <div id="fill-with-text-from-local-script-file">loading local script file...</div>
+
+  <div id="fill-with-text-when-remote-script-file-loaded">loading remote script file...</div>
+
+  <script src="scripts.js"
+    onload="javascript: document.getElementById('fill-with-text-from-local-script-file').innerText = 'Local script file successfully loaded';"
+    onerror="javascript: document.getElementById('fill-with-text-from-local-script-file').innerText = 'Local script file could not be loaded';">
+  </script>
+  <script src="http://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"
+    onload="javascript: document.getElementById('fill-with-text-when-remote-script-file-loaded').innerText = 'Remote script file successfully loaded';"
+    onerror="javascript: document.getElementById('fill-with-text-when-remote-script-file-loaded').innerText = 'Remote script file could not be loaded';">
+  </script>
+</body>
+</html>

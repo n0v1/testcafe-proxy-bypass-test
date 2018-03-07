@@ -1,0 +1,17 @@
+{
+  "name": "testcafe-proxy-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build-testcafe": "cd ./node_modules/testcafe && yarn install && npx gulp fast-build",
+    "serve": "serve --port 8000 ./dist",
+    "test": "testcafe --app \"npm run serve\" --app-init-delay 5000 --debug-mode firefox ./e2e/local.spec.js",
+    "test:proxy": "testcafe --app \"npm run serve\" --app-init-delay 5000 --debug-mode --proxy 172.30.109.30:8080 firefox ./e2e/remote.spec.js",
+    "test:proxy-bypass": "testcafe --app \"npm run serve\" --app-init-delay 5000 --debug-mode --proxy 172.30.109.30:8080 --proxy-bypass 127.0.0.1:8000 firefox ./e2e/local.spec.js"
+  },
+  "devDependencies": {
+    "serve": "6.5.2",
+    "testcafe": "https://github.com/DevExpress/testcafe.git#ff555e31f17482ae3ab27c833e97638da0811e59"
+  }
+}
